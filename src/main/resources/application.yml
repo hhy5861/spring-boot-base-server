@@ -1,0 +1,59 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /woof-base-server
+
+grpc:
+  address: 127.0.0.1
+  port: 6000
+  enabled: true
+
+spring:
+  application:
+    name: woof-base-server
+  datasource:
+    name: dataSource
+    url: jdbc:mysql://127.0.0.1:30012/woof_account_backend?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: blockshine@123
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  jmx:
+    enabled: true
+
+  redis:
+    host: 127.0.0.1
+    port: 30079
+    database: 0
+    timeout: 300ms
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+
+
+#mybatis
+mybatis:
+  config-location:  classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.heywoof.base.model
+
+security:
+  jwt:
+    secret: caff5e6289399ecff0ca4ac90f6b5907
+    expire: 1800000
