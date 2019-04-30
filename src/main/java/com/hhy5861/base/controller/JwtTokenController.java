@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/demo/jwt")
+@RequestMapping(value = "/account/jwt")
 public class JwtTokenController {
 
     @Autowired

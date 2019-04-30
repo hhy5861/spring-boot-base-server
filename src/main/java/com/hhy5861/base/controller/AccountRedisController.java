@@ -21,18 +21,17 @@ public class AccountRedisController {
     @Autowired
     private RedisTemplate<String, Account> redisTemplate;
 
-    final static String AccountKey = "account";
+    final static String AccountKey = "account_key";
 
     @GetMapping(value = "/info")
     public Response<Account> info(int id) {
+        Account data = redisTemplate.opsForValue().get(AccountKey);
 
-        Account accountData = redisTemplate.opsForValue().get(AccountKey);
-
-        if (accountData == null) {
-            accountData = accountService.getAccountById(id);
-            redisTemplate.opsForValue().set(AccountKey, accountData,60, TimeUnit.SECONDS);
+        if (data == null) {
+            data = accountService.getAccountById(id);
+            redisTemplate.opsForValue().set(AccountKey, data, 60, TimeUnit.SECONDS);
         }
 
-        return new Response<>(accountData);
+        return new Response<>(data);
     }
 }

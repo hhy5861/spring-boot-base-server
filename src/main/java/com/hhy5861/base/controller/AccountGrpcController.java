@@ -3,6 +3,7 @@ package com.hhy5861.base.controller;
 import com.hhy5861.account.AccountGrpc;
 import com.hhy5861.account.InfoRequest;
 import com.hhy5861.account.ListRequest;
+import com.hhy5861.base.model.Account;
 import com.hhy5861.common.tools.Response;
 import com.hhy5861.grpc.client.BaseGrpcClient;
 import com.hhy5861.grpc.proto.GrpcResponse;
@@ -35,7 +36,9 @@ public class AccountGrpcController extends BaseGrpcClient {
     public Response<?> info(int id) {
         InfoRequest infoRequest = InfoRequest.newBuilder().setId(id).build();
 
-        Object res = getResponse(accountBlockingStub.info(infoRequest));
-        return new Response<>(res);
+        Response<Account> res = getResponse(accountBlockingStub.info(infoRequest));
+
+        Account r = res.getData();
+        return new Response<>(r.getUuid());
     }
 }
