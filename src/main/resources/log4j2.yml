@@ -43,10 +43,10 @@ Configuration:
       AppenderRef:
         - ref: CONSOLE
         - ref: ROLLING_FILE
-    Logger:
-      - name: com.hhy5861
-        additivity: true
-        level: ${sys:log.level.hhy5861}
-        AppenderRef:
-          - ref: CONSOLE
-          - ref: ROLLING_FILE
+#    Logger:
+#      - name: com.hhy5861
+#        additivity: true
+#        level: ${sys:log.level.hhy5861}
+#        AppenderRef:
+#          - ref: CONSOLE
+#          - ref: ROLLING_FILE

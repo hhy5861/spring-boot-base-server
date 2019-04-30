@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 
 @RestController
 @RequestMapping(value = "/account/redis")
@@ -28,7 +30,7 @@ public class AccountRedisController {
 
         if (accountData == null) {
             accountData = accountService.getAccountById(id);
-            redisTemplate.opsForValue().set(AccountKey, accountData);
+            redisTemplate.opsForValue().set(AccountKey, accountData,60, TimeUnit.SECONDS);
         }
 
         return new Response<>(accountData);

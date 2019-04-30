@@ -32,10 +32,10 @@ public class JwtTokenController {
 
         String token = securityJwtService.create(jwtModel);
 
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
+        Map<String, String> res = new HashMap<>();
+        res.put("token", token);
 
-        return new Response<>(response);
+        return new Response<>(res);
     }
 
     @GetMapping(value = "/parse")
