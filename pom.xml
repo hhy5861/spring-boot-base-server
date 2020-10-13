@@ -29,7 +29,7 @@
         <hhy5861.handle.version>0.0.1-SNAPSHOT</hhy5861.handle.version>
         <hhy5861.account.model.version>0.0.1-SNAPSHOT</hhy5861.account.model.version>
         <jsonwebtoken.jjwt.version>0.9.0</jsonwebtoken.jjwt.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <hhy5861.grpc.version>0.0.1-SNAPSHOT</hhy5861.grpc.version>
     </properties>
 
